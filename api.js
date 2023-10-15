@@ -39,7 +39,17 @@ app.get('/remedios/search', (req, res) => {
     });
   });
   
-
+  app.get('/remedios/distinct/:letter', (req, res) => {
+    const { letter } = req.params;
+    const sql = 'SELECT DISTINCT Referencia FROM Banco WHERE Referencia LIKE ? ORDER BY Referencia';
+    db.query(sql, [`${letter}%`], (err, result) => {
+      if (err) {
+        throw err;
+      }
+      res.json(result);
+    });
+  });
+  
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
