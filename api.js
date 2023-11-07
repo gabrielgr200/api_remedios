@@ -7,7 +7,7 @@ const port = 2500;
 const db = mysql.createConnection({
   host: 'bancomysql.c1rmsxzyhbjb.us-east-2.rds.amazonaws.com',
   user: 'admin',
-  password: 'Skyfall20#?',
+  password: 'Skyfall20',
   database: 'Integrador',
 });
 
