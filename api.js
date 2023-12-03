@@ -1,13 +1,14 @@
 const express = require('express');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 const app = express();
 const port = 2500;
 
 const db = mysql.createConnection({
-  host: 'bancomysql.c1rmsxzyhbjb.us-east-2.rds.amazonaws.com',
-  user: 'admin',
-  password: 'Skyfall20',
+  host: 'containers-us-west-37.railway.app',
+  user: 'root',
+  port: '5699',
+  password: '2F3UfdCTUbleiDyyydVt',
   database: 'Integrador',
 });
 
