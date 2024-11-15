@@ -5,11 +5,11 @@ const app = express();
 const port = 2500;
 
 const db = mysql.createConnection({
-  host: 'containers-us-west-37.railway.app',
+  host: 'viaduct.proxy.rlwy.net',
   user: 'root',
-  port: '5699',
-  password: '2F3UfdCTUbleiDyyydVt',
-  database: 'Integrador',
+  port: '35342',
+  password: 'ebdcGDAE1-cHa2B-aeCDGffGHhghgFg3',
+  database: 'projetoIntegrador',
 });
 
 db.connect((err) => {
@@ -20,7 +20,7 @@ db.connect((err) => {
 });
 
 app.get('/remedios', (req, res) => {
-  const sql = 'SELECT * FROM Banco';
+  const sql = 'SELECT * FROM Integrador';
   db.query(sql, (err, result) => {
     if (err) {
       throw err;
@@ -31,7 +31,7 @@ app.get('/remedios', (req, res) => {
 
 app.get('/remedios/search', (req, res) => {
   const { nome } = req.query;
-  const sql = `SELECT * FROM Banco WHERE Principio LIKE ? OR Referencia LIKE ?`;
+  const sql = `SELECT * FROM Integrador WHERE Principio LIKE ? OR Referencia LIKE ?`;
   db.query(sql, [`%${nome}%`, `%${nome}%`], (err, result) => {
     if (err) {
       throw err;
@@ -42,7 +42,7 @@ app.get('/remedios/search', (req, res) => {
 
 app.get('/remedios/distinct/:letter', (req, res) => {
   const { letter } = req.params;
-  const sql = 'SELECT DISTINCT Referencia, Principio, Comercial, Registro, Colaterais, Decomposto, Farmacia, Concentracao FROM Banco WHERE Referencia LIKE ? ORDER BY Referencia';
+  const sql = 'SELECT DISTINCT Referencia, Principio, Comercial, Registro, Colaterais, Decomposto, Farmacia, Concentracao FROM Integrador WHERE Referencia LIKE ? ORDER BY Referencia';
 
   db.query(sql, [`${letter}%`], (err, result) => {
     if (err) {
